@@ -84,7 +84,7 @@ configuration:
         interfaces:
           - interfaceType: N9
             endpoints:
-              - 192.168.57.105
+              - 192.168.59.105
             networkInstances:
               - internet
 
