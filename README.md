@@ -35,9 +35,7 @@ Please manually start the following components **before** running Free5GC:
 - PSA-UPF-1  
 - PSA-UPF-2  
 
-The **SMF** will be configured using the following config file:
-
-config file /config/multiUPF/smfcfg_multi.yaml
+The **SMF** will be configured using this configuration [file](https://github.com/bilalghani1/free5gc-multi-upfs/blob/main/config/multiUPF/smfcfg_multi.yaml)
 
 ## Documentation
 
