@@ -65,7 +65,7 @@ configuration:
               - internet
           - interfaceType: N9
             endpoints:
-              - 192.168.57.104
+              - 192.168.59.104
             networkInstances:
               - internet
 
@@ -80,7 +80,7 @@ configuration:
             dnnUpfInfoList:
               - dnn: internet
                 pools:
-                  - cidr: 10.60.0.0/24
+                  - cidr: 10.61.0.0/24
         interfaces:
           - interfaceType: N9
             endpoints:
@@ -99,7 +99,7 @@ configuration:
             dnnUpfInfoList:
               - dnn: IMS
                 pools:
-                  - cidr: 10.61.0.0/24
+                  - cidr: 10.60.0.0/24
         interfaces:
           - interfaceType: N3
             endpoints:
