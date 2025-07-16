@@ -22,7 +22,9 @@ For more information, please refer to [free5GC official site](https://free5gc.or
 
 The network diagram is as follows:
 
-<img src="images/network.png" alt="Network Diagram" width="600"/>
+<p align="center">
+  <img src="images/network.png" alt="Network Diagram" width="600"/>
+</p>
 
 ---
 
