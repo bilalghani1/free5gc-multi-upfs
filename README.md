@@ -18,6 +18,10 @@ The free5GC (a Linux Foundation project) is an open-source project for 5th gener
 
 For more information, please refer to [free5GC official site](https://free5gc.org/).
 
+## Instruction
+
+run.sh has been modified. It will not run the UPF, so please run I-UPF, PSA-UPF-1 and PSA-UPF-2 before running this free5gc. SMF will run from the config file /config/multiUPF/smfcfg_multi.yaml
+
 ## Documentation
 
 For document, please refer to [free5gc.org/guide/](https://free5gc.org/guide/).
