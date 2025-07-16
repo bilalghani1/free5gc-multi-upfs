@@ -1,1 +1,136 @@
+info:
+  version: 1.0.7
+  description: SMF initial local configuration
 
+configuration:
+  smfName: SMF
+  sbi:
+    scheme: http
+    registerIPv4: 127.0.0.2 # IP used to register to NRF
+    bindingIPv4: 127.0.0.2 # IP used to bind the service
+    port: 8000
+    tls:
+      key: cert/smf.key
+      pem: cert/smf.pem
+  serviceNameList:
+    - nsmf-pdusession
+    - nsmf-event-exposure
+    - nsmf-oam
+  snssaiInfos:
+    - sNssai:
+        sst: 1
+        sd: 010203
+      dnnInfos:
+        - dnn: internet
+          dns:
+            ipv4: 8.8.8.8
+            ipv6: 2001:4860:4860::8888
+    - sNssai:
+        sst: 1
+        sd: 112233
+      dnnInfos:
+        - dnn: IMS
+          dns:
+            ipv4: 8.8.8.8
+            ipv6: 2001:4860:4860::8888
+  plmnList: # the list of PLMN IDs that this SMF belongs to (optional, remove this key when unnecessary)
+    - mcc: 208 # Mobile Country Code (3 digits string, digit: 0~9)
+      mnc: 93 # Mobile Network Code (2 or 3 digits string, digit: 0~9)
+  locality: area1 # Name of the location where a set of AMF, SMF, PCF and UPFs are located
+  pfcp:
+    nodeID: 192.168.58.101
+    listenAddr: 192.168.58.101
+    externalAddr: 192.168.58.101
+  userplaneInformation:
+    upNodes:
+      gNB1:
+        type: AN
+        #an_ip: 192.188.2.3
+
+      I-UPF:
+        type: UPF
+        nodeID: 192.168.58.104
+        addr: 192.168.58.104
+        sNssaiUpfInfos:
+          - sNssai:
+              sst: 1
+              sd: 010203
+            dnnUpfInfoList:
+              - dnn: internet
+        interfaces:
+          - interfaceType: N3
+            endpoints:
+              - 192.168.57.104
+            networkInstances:
+              - internet
+          - interfaceType: N9
+            endpoints:
+              - 192.168.57.104
+            networkInstances:
+              - internet
+
+      PSA-UPF-2:
+        type: UPF
+        nodeID: 192.168.58.105
+        addr: 192.168.58.105
+        sNssaiUpfInfos:
+          - sNssai:
+              sst: 1
+              sd: 010203
+            dnnUpfInfoList:
+              - dnn: internet
+                pools:
+                  - cidr: 10.60.0.0/24
+        interfaces:
+          - interfaceType: N9
+            endpoints:
+              - 192.168.57.105
+            networkInstances:
+              - internet
+
+      PSA-UPF-1:
+        type: UPF
+        nodeID: 192.168.58.103
+        addr: 192.168.58.103
+        sNssaiUpfInfos:
+          - sNssai:
+              sst: 1
+              sd: 112233
+            dnnUpfInfoList:
+              - dnn: IMS
+                pools:
+                  - cidr: 10.61.0.0/24
+        interfaces:
+          - interfaceType: N3
+            endpoints:
+              - 192.168.57.103
+            networkInstances:
+              - IMS
+    links:
+      - A: gNB1
+        B: I-UPF
+      - A: I-UPF
+        B: PSA-UPF-2
+      - A: gNB1
+        B: PSA-UPF-1
+  nrfUri: http://127.0.0.10:8000
+  nrfCertPem: cert/nrf.pem # NRF Certificate
+  ulcl: true
+
+  # retransmission timer for pdu session modification command
+  t3591:
+    enable: true     # true or false
+    expireTime: 16s   # default is 6 seconds
+    maxRetryTimes: 3 # the max number of retransmission
+  # retransmission timer for pdu session release command
+  t3592:
+    enable: true     # true or false
+    expireTime: 16s   # default is 6 seconds
+    maxRetryTimes: 3 # the max number of retransmission
+  urrPeriod: 10 # default usage report period in seconds
+  urrThreshold: 1000 # default usage report threshold in bytes
+  requestedUnit: 1000
+logger: # log output setting
+  enable: true # true or false
+  level: info # how detailed to output, value: trace, debug, info, warn, error, fatal, panic
+  reportCaller: false # enable the caller report or not, value: true or false
