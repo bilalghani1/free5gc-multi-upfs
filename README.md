@@ -28,7 +28,7 @@ The network diagram is as follows:
 
 ---
 
-The `run.sh` script has been modified — it no longer runs the UPF automatically.  
+The [run.sh](https://github.com/bilalghani1/free5gc-multi-upfs/blob/main/run.sh) script has been modified — it no longer runs the UPF automatically.  
 Please manually start the following components **before** running Free5GC:
 
 - I-UPF  
