@@ -20,6 +20,10 @@ For more information, please refer to [free5GC official site](https://free5gc.or
 
 ## Instructions
 
+The network diagram is as follows
+
+<img src="images/network.png"/>
+
 run.sh has been modified. It will not run the UPF, so please run I-UPF, PSA-UPF-1 and PSA-UPF-2 before running this free5gc. SMF will run from the config file /config/multiUPF/smfcfg_multi.yaml
 
 ## Documentation
